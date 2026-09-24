@@ -541,4 +541,1274 @@ section {
 .trait-list li .mk { color: var(--lacquer-bright); font-family: var(--display); font-weight: 800; }
 
 .reroll-btn {
-  display: inline-flex; align-items: center; gap: 8px
+  display: inline-flex; align-items: center; gap: 8px;
+  margin-top: 12px; font-family: var(--mono); font-size: 0.62rem;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  padding: 7px 14px; border-radius: 99px; border: 1px solid var(--glass-border);
+  color: var(--gold-dim); background: var(--glass-fill);
+  transition: all .3s var(--ease);
+}
+.reroll-btn:hover {
+  border-color: var(--gold-bright); color: var(--gold-bright);
+  background: rgba(201,162,76,0.1); transform: translateY(-2px);
+}
+
+.class-banner {
+  grid-column: 1/-1; margin-top: 4px; padding-top: 24px; border-top: 1px solid var(--glass-border);
+  display: flex; align-items: center; gap: 20px; flex-wrap: wrap;
+}
+.class-banner .badge {
+  font-family: var(--display); font-weight: 800; font-size: 1.45rem; color: var(--ink);
+  background: linear-gradient(135deg, var(--gold-bright), var(--gold));
+  padding: 8px 20px; border-radius: 8px; box-shadow: 0 8px 24px rgba(201,162,76,0.3);
+  white-space: nowrap;
+}
+.class-banner p {
+  color: var(--parchment-dim); font-size: 1rem; line-height: 1.65; max-width: 520px;
+}
+
+/* ============================================================
+   CONNECT SECTION — FULL MOBILE HARMONY & INTEGRATED TALISMAN
+============================================================ */
+#connect {
+  display: grid; grid-template-columns: 1fr 1fr; gap: clamp(20px, 4vw, 36px); align-items: stretch;
+}
+@media (max-width: 900px) {
+  #connect { grid-template-columns: 1fr; }
+}
+
+.connect-card {
+  padding: clamp(22px, 4vw, 38px);
+  display: flex; flex-direction: column;
+  position: relative;
+}
+
+/* Eyebrow badge that never wraps awkwardly on phones */
+.plat {
+  font-family: var(--mono); font-size: 0.66rem; letter-spacing: 0.22em;
+  color: var(--jade-bright); text-transform: uppercase; margin-bottom: 8px;
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 8px; flex-wrap: wrap;
+}
+.plat .plat-title { white-space: nowrap; font-weight: 600; }
+.plat .plat-pill {
+  font-size: 0.58rem; letter-spacing: 0.12em; color: var(--gold-dim);
+  padding: 3px 8px; border-radius: 4px; border: 1px solid rgba(201,162,76,0.25);
+  background: rgba(0,0,0,0.3); white-space: nowrap;
+}
+@media (max-width: 380px) {
+  .plat .plat-pill { display: none; }
+}
+
+.connect-card h3 {
+  font-family: var(--display); font-size: clamp(1.6rem, 3.5vw, 1.95rem);
+  color: var(--parchment); margin-bottom: 10px;
+}
+.connect-card p {
+  color: var(--parchment-dim); font-size: 1.02rem; line-height: 1.7; margin-bottom: 20px;
+}
+
+/* ------------------------------------------------------------
+   THE SACRED QR TALISMAN (SEAMLESSLY WOVEN INTO WEBSITE STYLE)
+   - Ornate Japanese Gold Border with corner brackets
+   - Deep obsidian glass & celestial blue-violet harmony
+------------------------------------------------------------ */
+.talisman-wrap {
+  margin: 6px auto 22px auto;
+  width: 100%; max-width: 310px;
+  position: relative;
+}
+
+.talisman-frame {
+  position: relative;
+  background:
+    radial-gradient(ellipse 90% 80% at 50% -10%, rgba(56, 189, 248, 0.16), transparent 70%),
+    linear-gradient(165deg, rgba(26, 20, 24, 0.92) 0%, rgba(14, 11, 10, 0.95) 50%, rgba(18, 22, 34, 0.92) 100%);
+  border: 1px solid rgba(201,162,76,0.45);
+  border-radius: 20px;
+  padding: 22px 18px 18px;
+  box-shadow:
+    0 24px 60px rgba(0,0,0,0.7),
+    0 0 35px rgba(56,189,248,0.18),
+    inset 0 1px 0 rgba(255,255,255,0.12),
+    inset 0 0 25px rgba(201,162,76,0.06);
+  display: flex; flex-direction: column; align-items: center;
+  transition: transform 0.4s var(--ease), box-shadow 0.4s;
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+}
+
+/* Authentic Japanese corner brackets on the Talisman frame */
+.talisman-frame::before, .talisman-frame::after,
+.talisman-corners::before, .talisman-corners::after {
+  content: ""; position: absolute; width: 14px; height: 14px;
+  border: 2px solid var(--gold-bright); pointer-events: none;
+}
+.talisman-frame::before { top: 6px; left: 6px; border-right: none; border-bottom: none; }
+.talisman-frame::after  { top: 6px; right: 6px; border-left: none; border-bottom: none; }
+.talisman-corners::before { bottom: 6px; left: 6px; border-right: none; border-top: none; }
+.talisman-corners::after  { bottom: 6px; right: 6px; border-left: none; border-top: none; }
+
+/* Canvas mount tile */
+.talisman-canvas-tile {
+  width: 100%; max-width: 216px;
+  aspect-ratio: 1/1;
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 10px;
+  border: 1px solid rgba(201,162,76,0.4);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.35);
+  display: flex; align-items: center; justify-content: center;
+  position: relative;
+}
+
+#instaQrCanvas {
+  width: 100%; height: 100%;
+  display: block; border-radius: 8px;
+}
+
+/* Talisman handle & seal typography */
+.talisman-handle {
+  margin-top: 14px;
+  display: flex; align-items: center; gap: 8px;
+  font-family: var(--mono); font-weight: 600;
+  font-size: 1.15rem; letter-spacing: 0.12em;
+  color: var(--gold-bright);
+  text-shadow: 0 0 12px rgba(201,162,76,0.4);
+}
+.talisman-handle .dot-mark {
+  width: 5px; height: 5px; border-radius: 50%;
+  background: var(--jade-bright); box-shadow: 0 0 8px var(--jade-bright);
+}
+.talisman-subtext {
+  font-family: var(--mono); font-size: 0.58rem; letter-spacing: 0.22em;
+  color: var(--parchment-dim); text-transform: uppercase; margin-top: 4px;
+  opacity: 0.85;
+}
+
+/* ------------------------------------------------------------
+   SYNCHRONIZED FULL-WIDTH ACTION BUTTONS
+------------------------------------------------------------ */
+.btn-group-sync {
+  display: flex; flex-direction: column; gap: 10px;
+  margin-top: auto; width: 100%;
+}
+
+@media (min-width: 480px) and (max-width: 900px) {
+  .btn-group-sync { flex-direction: row; }
+  .btn-primary-sync { flex: 1.8; }
+  .btn-copy-chip { flex: 1.2; }
+}
+@media (min-width: 1200px) {
+  .btn-group-sync { flex-direction: row; }
+  .btn-primary-sync { flex: 1.8; }
+  .btn-copy-chip { flex: 1.2; }
+}
+
+.btn-primary-sync {
+  display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+  padding: 13px 20px; border-radius: 999px;
+  font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.14em;
+  font-weight: 600; text-transform: uppercase;
+  text-decoration: none; cursor: pointer;
+  transition: all .3s var(--ease);
+  position: relative; overflow: hidden;
+  min-height: 48px;
+}
+.btn-primary-sync:active { transform: scale(0.97); }
+
+.btn-insta {
+  background: linear-gradient(135deg, #1d4ed8 0%, #4338ca 50%, #991b1b 100%);
+  color: #ffffff;
+  border: 1px solid rgba(255,255,255,0.25);
+  box-shadow: 0 8px 24px rgba(67,56,202,0.35);
+}
+.btn-insta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px rgba(67,56,202,0.55), 0 0 15px rgba(201,162,76,0.35);
+  border-color: var(--gold-bright);
+}
+.btn-insta svg { width: 18px; height: 18px; fill: currentColor; flex-shrink: 0; }
+
+.btn-copy-chip {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  padding: 13px 18px; border-radius: 999px;
+  background: var(--glass-fill);
+  border: 1px solid var(--glass-border);
+  color: var(--parchment-dim);
+  font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.12em;
+  text-transform: uppercase;
+  transition: all .3s var(--ease);
+  min-height: 48px;
+}
+.btn-copy-chip:hover {
+  border-color: var(--gold-bright); color: var(--gold-bright);
+  background: rgba(201,162,76,0.1); transform: translateY(-2px);
+}
+.btn-copy-chip:active { transform: scale(0.97); }
+.btn-copy-chip svg { width: 15px; height: 15px; stroke: currentColor; fill: none; flex-shrink: 0; }
+
+/* ------------------------------------------------------------
+   DISCORD CARD DETAILS (RESPONSIVE SAFE-LAYOUT)
+------------------------------------------------------------ */
+.discord-meta-wrap {
+  display: flex; align-items: center; gap: 16px; margin-bottom: 18px;
+}
+.discord-avatar-wrap {
+  width: 62px; height: 62px; border-radius: 50%;
+  background: conic-gradient(from 140deg, var(--lacquer), var(--wood-light), var(--jade));
+  border: 2px solid var(--gold-dim);
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--display); font-weight: 800; font-size: 1.7rem; color: var(--parchment);
+  position: relative; box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+  flex-shrink: 0;
+}
+.discord-avatar-wrap .status-beacon {
+  position: absolute; bottom: 1px; right: 1px;
+  width: 14px; height: 14px; border-radius: 50%;
+  background: #23a55a; border: 2px solid var(--ink);
+  box-shadow: 0 0 10px #23a55a;
+}
+.discord-titles h4 {
+  font-family: var(--display); font-size: 1.55rem; color: var(--gold-bright); font-weight: 700;
+  line-height: 1.1;
+}
+.discord-titles .disc-handle {
+  font-family: var(--mono); font-size: 0.76rem; color: var(--parchment-dim); margin-top: 3px;
+}
+.discord-tag-badge {
+  display: inline-block; margin-top: 4px;
+  font-family: var(--mono); font-size: 0.62rem; color: var(--jade-bright);
+  letter-spacing: 0.12em; text-transform: uppercase;
+}
+
+.discord-id-box {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 12px 16px; border-radius: 12px;
+  background: rgba(0,0,0,0.32); border: 1px solid var(--glass-border);
+  margin-bottom: 22px; font-family: var(--mono);
+  gap: 10px; flex-wrap: wrap;
+}
+.discord-id-box .id-label {
+  font-size: 0.64rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold-dim);
+  white-space: nowrap;
+}
+.discord-id-box .id-num {
+  font-size: 0.88rem; color: var(--parchment); letter-spacing: 0.06em; font-weight: 500;
+  word-break: break-all;
+}
+
+.btn-discord {
+  background: linear-gradient(135deg, rgba(88,101,242,0.35), rgba(88,101,242,0.18));
+  color: var(--gold-bright);
+  border: 1px solid rgba(88,101,242,0.5);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+}
+.btn-discord:hover {
+  background: linear-gradient(135deg, rgba(88,101,242,0.85), var(--lacquer-bright));
+  color: #ffffff;
+  border-color: var(--gold-bright);
+  box-shadow: 0 12px 30px var(--discord-glow);
+  transform: translateY(-2px);
+}
+.btn-discord svg { width: 20px; height: 20px; fill: currentColor; flex-shrink: 0; }
+
+/* ============================================================
+   TOAST NOTIFICATION
+============================================================ */
+#toastBox {
+  position: fixed; bottom: 24px; right: 24px; z-index: 9999;
+  display: flex; flex-direction: column; gap: 8px;
+  pointer-events: none; max-width: calc(100vw - 48px);
+}
+.toast {
+  padding: 11px 20px; border-radius: 99px;
+  background: rgba(18,14,12,0.94);
+  border: 1px solid var(--gold-dim);
+  color: var(--gold-bright);
+  font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.14em;
+  text-transform: uppercase;
+  backdrop-filter: blur(14px);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+  opacity: 0; transform: translateY(14px);
+  transition: all .35s var(--ease);
+}
+.toast.show {
+  opacity: 1; transform: translateY(0);
+}
+
+/* ============================================================
+   FOOTER
+============================================================ */
+footer {
+  padding: clamp(50px, 8vw, 70px) clamp(16px, 6vw, 84px) 40px;
+  text-align: center; position: relative; z-index: 1;
+}
+.foot-seal {
+  width: 66px; height: 66px; margin: 0 auto 18px; border-radius: 50%;
+  border: 1px solid var(--gold-dim); display: flex; align-items: center; justify-content: center;
+  font-family: var(--display); font-weight: 800; color: var(--gold-bright);
+  transform: scaleX(-1); font-size: 1.45rem;
+  box-shadow: 0 0 20px rgba(201,162,76,0.18);
+}
+footer p {
+  font-family: var(--mono); font-size: 0.66rem; letter-spacing: 0.18em;
+  color: var(--parchment-dim); text-transform: uppercase;
+}
+footer p.small { margin-top: 8px; opacity: 0.6; font-size: 0.6rem; }
+</style>
+</head>
+<body>
+
+<!-- Background particle canvas -->
+<canvas id="particleCanvas"></canvas>
+
+<!-- Preloader -->
+<div id="preloader">
+  <div class="seal"><span>燿</span></div>
+  <div class="preload-caption">unrolling the scroll…</div>
+</div>
+
+<!-- Navigation Rail -->
+<nav class="railnav">
+  <a href="#hero" class="active"><span class="rlabel">gate</span><span class="dot"></span></a>
+  <a href="#identity"><span class="rlabel">seal</span><span class="dot"></span></a>
+  <a href="#worlds"><span class="rlabel">worlds</span><span class="dot"></span></a>
+  <a href="#status"><span class="rlabel">status</span><span class="dot"></span></a>
+  <a href="#connect"><span class="rlabel">connect</span><span class="dot"></span></a>
+</nav>
+
+<!-- Audio Controller (Generative Qin Music) -->
+<button id="soundToggle" aria-label="toggle ambient music">
+  <span class="ring"></span>
+  <span class="ring2"></span>
+  <svg id="iconSound" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+    <path d="M4 9v6h4l5 5V4L8 9H4z" fill="currentColor" stroke="none"/>
+    <path id="wavePath" d="M16 8a5 5 0 0 1 0 8" stroke-linecap="round"/>
+  </svg>
+</button>
+<span id="soundLabel">ambient qin</span>
+
+<!-- Toast Container -->
+<div id="toastBox"></div>
+
+<!-- ======================= HERO ======================= -->
+<section id="hero">
+  <canvas id="dragonCanvas"></canvas>
+  <div class="hero-frame"><i></i></div>
+  <div class="hero-inner">
+    <div class="hero-kicker">常世 · a wandering ledger</div>
+    <h1 class="hero-title">YATHIN</h1>
+    <div class="hero-glyph">燿 · YAO · to shine faintly</div>
+    <p class="hero-sub">A student who wandered into every genre and mastered none of them —
+      <b>Re:Zero</b> loyalist, film-reel hoarder, manga margin-scribbler, and a mostly-silent
+      guild member with a randomly-generated personality.</p>
+  </div>
+  <div class="scroll-cue"><span>descend</span><div class="scroll-line"></div></div>
+</section>
+
+<div class="panel-seam"></div>
+
+<!-- ======================= IDENTITY ======================= -->
+<section id="identity">
+  <div class="glass id-card">
+    <div class="id-portrait"><span>Y</span></div>
+    <div class="id-name">Yathin</div>
+    <div class="id-role">mr_yaen · ya._.thin</div>
+    <div class="id-quote">"If I were to kiss you and then go to hell, I would do it —
+      so I could brag to the devils that I tasted heaven without ever entering it."</div>
+  </div>
+
+  <div class="id-text">
+    <div class="eyebrow">the seal</div>
+    <h2 class="hd">Every trade, <em>half-learned</em>. Every world, <em>half-lived in</em>.</h2>
+    <p>Currently a <b>student</b> by daylight and an <b>archivist of fictional worlds</b> by
+      every other hour. I don't collect hobbies so much as I get quietly absorbed by them —
+      a little of everything, mastery of nothing, and I've made an uneasy peace with that.</p>
+    <p>Around people I run <b>low on social battery</b> and high on overthinking; around a
+      screen, a book, or a soundtrack, the battery seems infinite.</p>
+    <div class="id-tags">
+      <span class="tag">Student</span>
+      <span class="tag">Isekai apologist</span>
+      <span class="tag">Jack of all trades</span>
+      <span class="tag">Chronically online, quietly</span>
+      <span class="tag">Random.exe</span>
+    </div>
+  </div>
+</section>
+
+<div class="panel-seam"></div>
+
+<!-- ======================= WORLDS I WANDER ======================= -->
+<section id="worlds">
+  <div class="eyebrow">the archive</div>
+  <h2 class="hd">Worlds I Wander</h2>
+  <p class="worlds-intro">Five shelves in the same room — each one worn down at the
+    edges from overuse, none of them ever fully closed.</p>
+
+  <div class="archive-grid">
+    <div class="artifact glass">
+      <div class="glyph">環</div>
+      <h3>Anime</h3>
+      <div class="sub">The Home Shelf</div>
+      <p>Genre-omnivorous — classics, romance, shounen, seinen, and everything the
+        algorithm dares to recommend at 2AM. But there is one banner above the rest:
+        <b>Re:Zero</b>. Subaru's suffering is basically a personality trait I've adopted
+        by proxy.</p>
+      <span class="stamp">再開始</span>
+    </div>
+
+    <div class="artifact glass">
+      <div class="glyph">冊</div>
+      <h3>Manga</h3>
+      <div class="sub">The Margin Notes</div>
+      <p>Read faster than the anime can adapt, mostly out of impatience. The panel gutters
+        are where the real pacing lives, and I will absolutely spoil myself just to know
+        how it ends.</p>
+      <span class="stamp">既読</span>
+    </div>
+
+    <div class="artifact glass">
+      <div class="glyph">龍</div>
+      <h3>Donghua</h3>
+      <div class="sub">The Neighbor Shelf</div>
+      <p>Chinese animation's wuxia sensibilities and cultivation arcs scratch an itch
+        anime doesn't reach — slower burns, heavier mythology, gorgeous ink-wash
+        backgrounds.</p>
+      <span class="stamp">修真</span>
+    </div>
+
+    <div class="artifact glass">
+      <div class="glyph">映</div>
+      <h3>Film</h3>
+      <div class="sub">The Screening Room</div>
+      <p>A movie lover in the old-fashioned sense — I'll sit through the slow ones for
+        one good shot. Novels-turned-films get watched twice: once for the story,
+        once to judge the adaptation.</p>
+      <span class="stamp">上映中</span>
+    </div>
+
+    <div class="artifact glass">
+      <div class="glyph">頁</div>
+      <h3>Novels</h3>
+      <div class="sub">The Quiet Shelf</div>
+      <p>Where imagination gets to do the animation studio's job for free. Reading is the
+        one hobby that asks nothing of my social battery and gives everything back.</p>
+      <span class="stamp">続巻</span>
+    </div>
+
+    <div class="artifact glass">
+      <div class="glyph">拙</div>
+      <h3>Everything Else</h3>
+      <div class="sub">The Junk Drawer</div>
+      <p>Whatever hobby wandered in last — a little music, a little tinkering, a little
+        of anything that looked interesting for a week. The junk drawer is the most
+        honest shelf in the room.</p>
+      <span class="stamp">雑</span>
+    </div>
+  </div>
+</section>
+
+<div class="panel-seam"></div>
+
+<!-- ======================= STATUS WINDOW ======================= -->
+<section id="status">
+  <div class="eyebrow">the status window</div>
+  <h2 class="hd">Summoned as: <em>Support-type, Unclassed</em></h2>
+  <br>
+  <div class="status-window glass">
+    <div class="sw-top">
+      <span class="t1">Character Sheet</span>
+      <div class="sw-dots"><i></i><i></i><i></i></div>
+      <span class="t2">save point: today</span>
+    </div>
+    <div class="sw-body">
+      <div>
+        <div class="stat-row">
+          <div class="stat-label">
+            <span>Personality</span>
+            <b id="personalityVal">Random</b>
+          </div>
+          <div class="stat-bar"><div class="stat-fill" id="personalityFill" data-target="70"></div></div>
+          <div class="stat-note" id="personalityNote">No fixed build — mood, humor, and energy re-roll daily. Consistency was never the point.</div>
+          <button class="reroll-btn" id="rerollPersonality">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M21.5 2v6h-6M2.5 22v-6h6M2 11.5a10 10 0 0 1 18.8-4.3M22 12.5a10 10 0 0 1-18.8 4.2"/>
+            </svg>
+            Reroll Build
+          </button>
+        </div>
+        <div class="stat-row">
+          <div class="stat-label"><span>Social Skills</span><b>Low</b></div>
+          <div class="stat-bar"><div class="stat-fill jade" data-target="24"></div></div>
+          <div class="stat-note">Excellent in comment sections and Discord DMs. Loading screen appears before any real-life small talk.</div>
+        </div>
+        <div class="stat-row">
+          <div class="stat-label"><span>Skill Spread</span><b>Jack of All Trades</b></div>
+          <div class="stat-bar"><div class="stat-fill" data-target="88"></div></div>
+          <div class="stat-note">Wide skill tree, no capstone talent unlocked yet — and no plans to pick just one.</div>
+        </div>
+      </div>
+
+      <div class="traits-col">
+        <h4>Passive Traits</h4>
+        <ul class="trait-list">
+          <li><span class="mk">一</span> Re:Zero brain — every plot twist gets compared to Subaru's timeline.</li>
+          <li><span class="mk">二</span> Genre-omnivore — will try any anime, manga, novel, or donghua once.</li>
+          <li><span class="mk">三</span> Battery drains in crowds, recharges in fiction.</li>
+          <li><span class="mk">四</span> Starts hobbies faster than they finish them.</li>
+        </ul>
+      </div>
+
+      <div class="class-banner">
+        <span class="badge">Class: Wanderer</span>
+        <p>No main quest line — just a long list of side quests I picked up because they
+          looked interesting, and never quite dropped.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="panel-seam"></div>
+
+<!-- ======================= CONNECT ======================= -->
+<section id="connect">
+  <div style="grid-column: 1/-1;">
+    <div class="eyebrow">leave a mark</div>
+    <h2 class="hd" style="margin-bottom: 28px;">Connect &amp; Follow</h2>
+  </div>
+
+  <!-- INSTAGRAM CARD (ORNATE INTEGRATED TALISMAN + CELESTIAL BLUE QR) -->
+  <div class="connect-card glass">
+    <div class="plat">
+      <span class="plat-title">Instagram Nametag</span>
+      <span class="plat-pill">SCANNABLE QR</span>
+    </div>
+    <h3>@ya._.thin</h3>
+    <p>In sleep mode more often than not, but the QR still opens the door. Currently
+      watching Re:Zero — obviously.</p>
+
+    <!-- Handcrafted Talisman QR Shrine (Woven into Site Theme + Blue Dots) -->
+    <div class="talisman-wrap">
+      <div class="talisman-frame" id="talismanFrame">
+        <div class="talisman-corners"></div>
+        <div class="talisman-canvas-tile">
+          <canvas id="instaQrCanvas" width="420" height="420"></canvas>
+        </div>
+        <div class="talisman-handle">
+          <span class="dot-mark"></span>
+          <span>@YA._.THIN</span>
+          <span class="dot-mark"></span>
+        </div>
+        <div class="talisman-subtext">常世 · sealed nametag</div>
+      </div>
+    </div>
+
+    <!-- Perfectly synchronized action buttons -->
+    <div class="btn-group-sync">
+      <a href="https://www.instagram.com/ya._.thin/" target="_blank" rel="noopener noreferrer" class="btn-primary-sync btn-insta" id="btnInstaLink">
+        <svg viewBox="0 0 24 24">
+          <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+        </svg>
+        <span>Open Instagram Profile</span>
+      </a>
+      <button class="btn-copy-chip" id="copyInstaBtn" title="Copy Instagram username">
+        <svg viewBox="0 0 24 24" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+        <span>Copy Handle</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- DISCORD CARD (MATCHING THEME & SAFE MOBILE LAYOUT) -->
+  <div class="connect-card discord-card glass">
+    <div class="plat">
+      <span class="plat-title">Discord Sanctuary</span>
+      <span class="plat-pill">VERIFIED ID</span>
+    </div>
+
+    <div class="discord-meta-wrap">
+      <div class="discord-avatar-wrap">
+        <span>Y</span>
+        <div class="status-beacon" title="Online / Active"></div>
+      </div>
+      <div class="discord-titles">
+        <h4>YATHIN</h4>
+        <div class="disc-handle">mr_yaen</div>
+        <div class="discord-tag-badge">Guild Member Since 2024</div>
+      </div>
+    </div>
+
+    <p>Low social battery in voice chat, unlimited in text — find me lurking in whatever
+      server has the best fan theories, coding bots, or cultivation debates.</p>
+
+    <!-- Discord Account ID box -->
+    <div class="discord-id-box">
+      <span class="id-label">Discord User ID</span>
+      <span class="id-num">1285791141266063475</span>
+    </div>
+
+    <!-- Synchronized Discord action buttons -->
+    <div class="btn-group-sync">
+      <a href="https://discord.com/users/1285791141266063475" target="_blank" rel="noopener noreferrer" class="btn-primary-sync btn-discord" id="btnDiscordLink">
+        <svg viewBox="0 0 24 24">
+          <path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.929 1.793 8.18 1.793 12.061 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.893.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.028zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/>
+        </svg>
+        <span>Open Discord Profile</span>
+      </a>
+      <button class="btn-copy-chip" id="copyDiscordBtn" title="Copy Discord User ID">
+        <svg viewBox="0 0 24 24" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+        <span>Copy ID</span>
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= FOOTER ======================= -->
+<footer>
+  <div class="foot-seal">燿</div>
+  <p>Yathin · 常世 the wandering ledger</p>
+  <p class="small">a jack of all trades, sealed in wood, gold &amp; glass</p>
+</footer>
+
+<!-- ============================================================
+     SCRIPTS & INTERACTIONS
+============================================================ */
+<script>
+/* ------------------------------------------------------------
+   1. TOAST NOTIFICATION UTILITY
+------------------------------------------------------------ */
+function showToast(msg) {
+  const box = document.getElementById('toastBox');
+  const t = document.createElement('div');
+  t.className = 'toast';
+  t.textContent = msg;
+  box.appendChild(t);
+  requestAnimationFrame(() => t.classList.add('show'));
+  setTimeout(() => {
+    t.classList.remove('show');
+    setTimeout(() => t.remove(), 400);
+  }, 2400);
+}
+
+/* ------------------------------------------------------------
+   2. COPY ACTIONS (INSTAGRAM HANDLE & DISCORD ID)
+------------------------------------------------------------ */
+document.getElementById('copyInstaBtn').addEventListener('click', () => {
+  navigator.clipboard.writeText('@ya._.thin').then(() => {
+    showToast('Copied: @ya._.thin');
+  }).catch(() => {
+    showToast('Instagram: @ya._.thin');
+  });
+});
+
+document.getElementById('copyDiscordBtn').addEventListener('click', () => {
+  navigator.clipboard.writeText('1285791141266063475').then(() => {
+    showToast('Copied ID: 1285791141266063475');
+  }).catch(() => {
+    showToast('Discord: 1285791141266063475');
+  });
+});
+
+/* ------------------------------------------------------------
+   3. PRELOADER & GSAP TIMELINE INITIALIZATION
+------------------------------------------------------------ */
+window.addEventListener('load', () => {
+  setTimeout(() => {
+    const pl = document.getElementById('preloader');
+    pl.classList.add('done');
+
+    if (window.gsap) {
+      gsap.from('.hero-kicker', { opacity: 0, y: 20, duration: 1, delay: 0.2, ease: 'power3.out' });
+      gsap.from('.hero-title', { opacity: 0, y: 35, duration: 1.3, delay: 0.4, ease: 'power3.out' });
+      gsap.from('.hero-glyph', { opacity: 0, y: 20, duration: 1, delay: 0.7, ease: 'power3.out' });
+      gsap.from('.hero-sub', { opacity: 0, y: 25, duration: 1.2, delay: 0.9, ease: 'power3.out' });
+      gsap.from('.scroll-cue', { opacity: 0, y: 15, duration: 1, delay: 1.2, ease: 'power3.out' });
+    }
+  }, 700);
+});
+
+/* ------------------------------------------------------------
+   4. GSAP SCROLLTRIGGER & REVEAL ANIMATIONS
+------------------------------------------------------------ */
+if (window.gsap && window.ScrollTrigger) {
+  gsap.registerPlugin(ScrollTrigger);
+
+  gsap.utils.toArray('section').forEach(sec => {
+    gsap.from(sec.querySelectorAll('.eyebrow, .hd'), {
+      scrollTrigger: {
+        trigger: sec,
+        start: 'top 85%',
+        toggleActions: 'play none none none'
+      },
+      opacity: 0,
+      y: 30,
+      duration: 1.0,
+      stagger: 0.14,
+      ease: 'power3.out'
+    });
+  });
+
+  gsap.from('.artifact', {
+    scrollTrigger: {
+      trigger: '#worlds',
+      start: 'top 78%',
+      toggleActions: 'play none none none'
+    },
+    opacity: 0,
+    y: 35,
+    duration: 0.85,
+    stagger: 0.1,
+    ease: 'power3.out'
+  });
+
+  gsap.from('.status-window', {
+    scrollTrigger: {
+      trigger: '#status',
+      start: 'top 78%',
+      toggleActions: 'play none none none'
+    },
+    opacity: 0,
+    y: 40,
+    duration: 1.1,
+    ease: 'power3.out'
+  });
+
+  gsap.utils.toArray('.stat-fill').forEach(bar => {
+    const target = bar.getAttribute('data-target');
+    ScrollTrigger.create({
+      trigger: bar,
+      start: 'top 92%',
+      onEnter: () => { bar.style.width = target + '%'; }
+    });
+  });
+
+  gsap.from('.connect-card', {
+    scrollTrigger: {
+      trigger: '#connect',
+      start: 'top 78%',
+      toggleActions: 'play none none none'
+    },
+    opacity: 0,
+    y: 35,
+    duration: 1.0,
+    stagger: 0.18,
+    ease: 'power3.out'
+  });
+} else {
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if(e.isIntersecting) {
+        e.target.style.opacity = '1';
+        e.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, { threshold: 0.15 });
+  document.querySelectorAll('.glass, .artifact, .id-card, .status-window').forEach(el => io.observe(el));
+
+  const ioBars = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if(e.isIntersecting) {
+        const t = e.target.getAttribute('data-target');
+        e.target.style.width = t + '%';
+      }
+    });
+  }, { threshold: 0.3 });
+  document.querySelectorAll('.stat-fill').forEach(b => ioBars.observe(b));
+}
+
+/* ------------------------------------------------------------
+   5. NAVIGATION RAIL ACTIVE STATE
+------------------------------------------------------------ */
+const navLinks = document.querySelectorAll('.railnav a');
+const navSections = [...navLinks].map(a => document.querySelector(a.getAttribute('href')));
+window.addEventListener('scroll', () => {
+  let currentIdx = 0;
+  const scrollMid = window.scrollY + window.innerHeight * 0.45;
+  navSections.forEach((sec, idx) => {
+    if (sec && sec.offsetTop <= scrollMid) {
+      currentIdx = idx;
+    }
+  });
+  navLinks.forEach((link, idx) => {
+    link.classList.toggle('active', idx === currentIdx);
+  });
+}, { passive: true });
+
+/* ------------------------------------------------------------
+   6. 3D PERSPECTIVE TILT (DESKTOP POINTERS)
+------------------------------------------------------------ */
+if (window.matchMedia('(pointer: fine)').matches) {
+  const tiltCards = document.querySelectorAll('.glass, .talisman-frame');
+  tiltCards.forEach(card => {
+    card.addEventListener('mousemove', (e) => {
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      const cx = rect.width / 2;
+      const cy = rect.height / 2;
+      const rotX = ((y - cy) / cy) * -5.5;
+      const rotY = ((x - cx) / cx) * 5.5;
+      card.style.transform = `perspective(900px) rotateX(${rotX}deg) rotateY(${rotY}deg) translateY(-3px)`;
+    });
+    card.addEventListener('mouseleave', () => {
+      card.style.transform = `perspective(900px) rotateX(0deg) rotateY(0deg) translateY(0px)`;
+    });
+  });
+}
+
+/* ------------------------------------------------------------
+   7. INTERACTIVE RPG STAT REROLL
+------------------------------------------------------------ */
+const personalities = [
+  { name: "Random.exe", pct: 75, note: "No fixed build — mood, humor, and energy re-roll daily. Consistency was never the point." },
+  { name: "2AM Theorist", pct: 92, note: "Deep dive mode enabled. Decoding light novel foreshadowing while the world sleeps." },
+  { name: "Re:Zero Apologist", pct: 99, note: "Arc 6 enthusiast. Believes Subaru's suffering holds the key to emotional enlightenment." },
+  { name: "Silent Guild Member", pct: 40, note: "Always online, rarely in VC. Top-tier lurker with lethal one-liners in chat." },
+  { name: "Jack of All Arts", pct: 86, note: "Writing scripts, configuring emulators, editing manga clips — master of nothing, learner of all." }
+];
+
+let rollIndex = 0;
+document.getElementById('rerollPersonality').addEventListener('click', () => {
+  rollIndex = (rollIndex + 1) % personalities.length;
+  const current = personalities[rollIndex];
+  const valEl = document.getElementById('personalityVal');
+  const fillEl = document.getElementById('personalityFill');
+  const noteEl = document.getElementById('personalityNote');
+
+  valEl.style.opacity = '0';
+  noteEl.style.opacity = '0';
+  setTimeout(() => {
+    valEl.textContent = current.name;
+    noteEl.textContent = current.note;
+    fillEl.style.width = current.pct + '%';
+    valEl.style.opacity = '1';
+    noteEl.style.opacity = '1';
+  }, 250);
+
+  if (actx) {
+    const now = actx.currentTime;
+    pluck(523.25, now, 0.4, 0.08);
+    pluck(659.25, now + 0.1, 0.6, 0.07);
+    pluck(783.99, now + 0.2, 0.8, 0.09);
+  }
+  showToast('Rerolled: ' + current.name);
+});
+
+/* ------------------------------------------------------------
+   8. CODE-FORMAT INSTAGRAM QR CODE RENDERER
+   - Renders the authentic QR code for https://www.instagram.com/ya._.thin
+   - High-contrast, scannable blue-to-indigo dots
+   - Harmonized with the site's dark glass and gold aesthetics
+------------------------------------------------------------ */
+const qrMatrixData = [
+  "11111110000000011011101111111",
+  "10000010010010000110001000001",
+  "10111010100110101001101011101",
+  "10111010100010000101001011101",
+  "10111010100001110111001011101",
+  "10000010111101110100101000001",
+  "11111110101010101010101111111",
+  "00000000100101001000100000000",
+  "10111110011000100101001111100",
+  "10001100101110001111111110001",
+  "01100010001010011000111000000",
+  "11100000100000110000000101010",
+  "01010111000000000110000001100",
+  "00110101011001101111111010001",
+  "11011010010101110100001101100",
+  "00000100010101010001011110010",
+  "00110011101110100100100101100",
+  "11101101001000001101101110101",
+  "10101110010010010010110100100",
+  "10011001011110111001101110010",
+  "11111110100110011100111110111",
+  "00000000111101101010100011111",
+  "11111110001001110011101011100",
+  "10000010101011001001100010001",
+  "10111010100100100110111110110",
+  "10111010111100000111000101111",
+  "10111010100101011100001111110",
+  "10000010010011001010100101010",
+  "11111110110100101001010111100"
+];
+
+function renderInstaQR() {
+  const canvas = document.getElementById('instaQrCanvas');
+  if(!canvas) return;
+  const ctx = canvas.getContext('2d');
+  const dpr = Math.min(window.devicePixelRatio || 1, 2);
+
+  const displaySize = 210;
+  canvas.width = displaySize * dpr;
+  canvas.height = displaySize * dpr;
+  ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+  ctx.clearRect(0, 0, displaySize, displaySize);
+
+  const N = 29;
+  const margin = 12;
+  const area = displaySize - (margin * 2);
+  const cell = area / N;
+
+  const grad = ctx.createLinearGradient(0, 0, displaySize, displaySize);
+  grad.addColorStop(0, '#1d4ed8');
+  grad.addColorStop(0.5, '#4338ca');
+  grad.addColorStop(1, '#7c3aed');
+
+  const finderColor = '#1e40af';
+
+  function inFinder(r, c) {
+    if (r < 7 && c < 7) return true;
+    if (r < 7 && c >= N - 7) return true;
+    if (r >= N - 7 && c < 7) return true;
+    return false;
+  }
+
+  function inCenterLogo(r, c) {
+    return (r >= 11 && r <= 17 && c >= 11 && c <= 17);
+  }
+
+  ctx.fillStyle = grad;
+  const dotRadius = cell * 0.44;
+
+  for (let r = 0; r < N; r++) {
+    for (let c = 0; c < N; c++) {
+      if (inFinder(r, c)) continue;
+      if (inCenterLogo(r, c)) continue;
+
+      if (qrMatrixData[r][c] === '1') {
+        const cx = margin + (c + 0.5) * cell;
+        const cy = margin + (r + 0.5) * cell;
+        ctx.beginPath();
+        ctx.arc(cx, cy, dotRadius, 0, Math.PI * 2);
+        ctx.fill();
+      }
+    }
+  }
+
+  function drawInstaFinder(topR, leftC) {
+    const x = margin + leftC * cell;
+    const y = margin + topR * cell;
+    const w = 7 * cell;
+    const radius = 8;
+
+    ctx.save();
+    ctx.strokeStyle = finderColor;
+    ctx.lineWidth = cell * 0.95;
+    ctx.lineJoin = 'round';
+
+    const halfThick = ctx.lineWidth / 2;
+    const fx = x + halfThick;
+    const fy = y + halfThick;
+    const fw = w - ctx.lineWidth;
+
+    ctx.beginPath();
+    ctx.roundRect(fx, fy, fw, fw, radius);
+    ctx.stroke();
+
+    ctx.fillStyle = finderColor;
+    const innerX = x + 2.1 * cell;
+    const innerY = y + 2.1 * cell;
+    const innerW = 2.8 * cell;
+    ctx.beginPath();
+    ctx.roundRect(innerX, innerY, innerW, innerW, 5);
+    ctx.fill();
+
+    ctx.restore();
+  }
+
+  drawInstaFinder(0, 0);
+  drawInstaFinder(0, N - 7);
+  drawInstaFinder(N - 7, 0);
+
+  const centerSize = 7.0 * cell;
+  const centerX = margin + 14.5 * cell - (centerSize / 2);
+  const centerY = margin + 14.5 * cell - (centerSize / 2);
+
+  ctx.save();
+  ctx.fillStyle = '#ffffff';
+  ctx.shadowColor = 'rgba(0,0,0,0.15)';
+  ctx.shadowBlur = 6;
+  ctx.beginPath();
+  ctx.roundRect(centerX - 2, centerY - 2, centerSize + 4, centerSize + 4, 8);
+  ctx.fill();
+  ctx.restore();
+
+  ctx.save();
+  ctx.strokeStyle = '#2563eb';
+  ctx.lineWidth = 2.4;
+  ctx.lineCap = 'round';
+  ctx.lineJoin = 'round';
+
+  const camMargin = 4;
+  const cx = centerX + camMargin;
+  const cy = centerY + camMargin;
+  const cw = centerSize - (camMargin * 2);
+
+  ctx.beginPath();
+  ctx.roundRect(cx, cy, cw, cw, 7);
+  ctx.stroke();
+
+  ctx.beginPath();
+  ctx.arc(cx + cw / 2, cy + cw / 2, cw * 0.28, 0, Math.PI * 2);
+  ctx.stroke();
+
+  ctx.fillStyle = '#2563eb';
+  ctx.beginPath();
+  ctx.arc(cx + cw * 0.76, cy + cw * 0.24, cw * 0.08, 0, Math.PI * 2);
+  ctx.fill();
+
+  ctx.restore();
+}
+
+renderInstaQR();
+
+/* ------------------------------------------------------------
+   9. LIQUID-GLASS DRAGON CANVAS
+------------------------------------------------------------ */
+const dragonCanvas = document.getElementById('dragonCanvas');
+const dctx = dragonCanvas.getContext('2d');
+let dW, dH, dDPR;
+
+function resizeDragon() {
+  dDPR = Math.min(window.devicePixelRatio || 1, 2);
+  dW = dragonCanvas.clientWidth;
+  dH = dragonCanvas.clientHeight;
+  dragonCanvas.width = dW * dDPR;
+  dragonCanvas.height = dH * dDPR;
+  dctx.setTransform(dDPR, 0, 0, dDPR, 0, 0);
+}
+window.addEventListener('resize', resizeDragon);
+resizeDragon();
+
+let t0 = performance.now();
+const segments = 140;
+const scales = [];
+for (let i = 0; i < segments; i++) {
+  scales.push({ wob: Math.random() * Math.PI * 2 });
+}
+
+function dragonPath(time) {
+  const pts = [];
+  const cx = dW * 0.5, cy = dH * 0.5;
+  const ampX = Math.min(dW, 1400) * 0.35;
+  const ampY = dH * 0.30;
+  for (let i = 0; i < segments; i++) {
+    const p = i / (segments - 1);
+    const y = -dH * 0.18 + p * (dH * 1.36);
+    const wob = Math.sin(p * Math.PI * 3.1 + time * 0.00028) * ampX * (0.55 + 0.45 * Math.sin(p * Math.PI));
+    const drift = Math.sin(time * 0.00012 + p * 2.0) * ampY * 0.12;
+    const x = cx + wob + drift;
+    pts.push({ x, y: cy + y });
+  }
+  return pts;
+}
+
+function drawDragon(now) {
+  const time = now - t0;
+  dctx.clearRect(0, 0, dW, dH);
+
+  const pts = dragonPath(time);
+
+  dctx.save();
+  dctx.beginPath();
+  pts.forEach((p, i) => (i === 0 ? dctx.moveTo(p.x, p.y) : dctx.lineTo(p.x, p.y)));
+  const grad = dctx.createLinearGradient(0, 0, 0, dH);
+  grad.addColorStop(0, 'rgba(163,49,31,0.0)');
+  grad.addColorStop(0.18, 'rgba(201,162,76,0.6)');
+  grad.addColorStop(0.5, 'rgba(111,160,141,0.55)');
+  grad.addColorStop(0.82, 'rgba(163,49,31,0.6)');
+  grad.addColorStop(1, 'rgba(163,49,31,0.0)');
+  dctx.strokeStyle = grad;
+  dctx.lineWidth = 2.6;
+  dctx.lineJoin = 'round';
+  dctx.lineCap = 'round';
+  dctx.shadowColor = 'rgba(201,162,76,0.6)';
+  dctx.shadowBlur = 20;
+  dctx.globalAlpha = 0.88;
+  dctx.stroke();
+  dctx.restore();
+
+  for (let i = 2; i < pts.length - 2; i += 3) {
+    const p = pts[i];
+    const pnext = pts[i + 1] || p;
+    const angle = Math.atan2(pnext.y - p.y, pnext.x - p.x);
+    const p0 = i / (pts.length - 1);
+    const width = (10 + 9 * Math.sin(p0 * Math.PI)) * (0.85 + 0.15 * Math.sin(scales[i].wob + time * 0.0016));
+    const alphaEdge = Math.sin(p0 * Math.PI);
+
+    dctx.save();
+    dctx.translate(p.x, p.y);
+    dctx.rotate(angle);
+
+    const g = dctx.createLinearGradient(-width, 0, width, 0);
+    g.addColorStop(0, 'rgba(236,226,198,0)');
+    g.addColorStop(0.5, `rgba(236,226,198,${0.18 * alphaEdge})`);
+    g.addColorStop(1, 'rgba(236,226,198,0)');
+    dctx.fillStyle = g;
+    dctx.beginPath();
+    dctx.ellipse(0, 0, width * 1.6, width * 0.65, 0, 0, Math.PI * 2);
+    dctx.fill();
+
+    dctx.strokeStyle = `rgba(201,162,76,${0.32 * alphaEdge})`;
+    dctx.lineWidth = 1;
+    dctx.stroke();
+    dctx.restore();
+  }
+
+  const pearlP = Math.sin(time * 0.00022) * 0.5 + 0.5;
+  const idx = Math.floor(pearlP * (pts.length - 1));
+  const pp = pts[idx];
+  if (pp) {
+    dctx.save();
+    const pg = dctx.createRadialGradient(pp.x, pp.y, 0, pp.x, pp.y, 28);
+    pg.addColorStop(0, 'rgba(236,207,130,0.95)');
+    pg.addColorStop(0.5, 'rgba(201,162,76,0.35)');
+    pg.addColorStop(1, 'rgba(236,207,130,0)');
+    dctx.fillStyle = pg;
+    dctx.beginPath();
+    dctx.arc(pp.x, pp.y, 28, 0, Math.PI * 2);
+    dctx.fill();
+    dctx.restore();
+  }
+
+  requestAnimationFrame(drawDragon);
+}
+requestAnimationFrame(drawDragon);
+
+/* ------------------------------------------------------------
+   10. BACKGROUND CELESTIAL EMBER DUST
+------------------------------------------------------------ */
+const pCanvas = document.getElementById('particleCanvas');
+const pctx = pCanvas.getContext('2d');
+let pW, pH;
+
+function resizeParticles() {
+  pW = pCanvas.width = window.innerWidth;
+  pH = pCanvas.height = window.innerHeight;
+}
+window.addEventListener('resize', resizeParticles);
+resizeParticles();
+
+const particles = [];
+const particleCount = 38;
+for (let i = 0; i < particleCount; i++) {
+  particles.push({
+    x: Math.random() * pW,
+    y: Math.random() * pH,
+    r: Math.random() * 1.8 + 0.6,
+    vy: -(Math.random() * 0.35 + 0.15),
+    vx: (Math.random() - 0.5) * 0.25,
+    alpha: Math.random() * 0.5 + 0.2,
+    phase: Math.random() * Math.PI * 2
+  });
+}
+
+function drawParticles() {
+  pctx.clearRect(0, 0, pW, pH);
+  particles.forEach(p => {
+    p.y += p.vy;
+    p.x += p.vx + Math.sin(p.phase += 0.015) * 0.2;
+    if (p.y < -10) {
+      p.y = pH + 10;
+      p.x = Math.random() * pW;
+    }
+    if (p.x < -10) p.x = pW + 10;
+    if (p.x > pW + 10) p.x = -10;
+
+    pctx.save();
+    pctx.beginPath();
+    pctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+    pctx.fillStyle = `rgba(236,207,130,${p.alpha})`;
+    pctx.shadowColor = 'rgba(201,162,76,0.5)';
+    pctx.shadowBlur = 6;
+    pctx.fill();
+    pctx.restore();
+  });
+  requestAnimationFrame(drawParticles);
+}
+requestAnimationFrame(drawParticles);
+
+/* ------------------------------------------------------------
+   11. AMBIENT QIN HARP — WEB AUDIO API SYNTHESIS
+------------------------------------------------------------ */
+let actx = null, playing = false, padGain = null, scheduleId = null;
+const pentatonic = [196.00, 220.00, 261.63, 293.66, 329.63, 392.00, 440.00, 523.25, 587.33, 659.25];
+
+function ensureAudio() {
+  if (actx) return;
+  actx = new (window.AudioContext || window.webkitAudioContext)();
+
+  padGain = actx.createGain();
+  padGain.gain.value = 0.0;
+  const filter = actx.createBiquadFilter();
+  filter.type = 'lowpass';
+  filter.frequency.value = 920;
+  padGain.connect(filter).connect(actx.destination);
+
+  [98, 146.83, 220].forEach((f, i) => {
+    const o = actx.createOscillator();
+    o.type = i === 0 ? 'sine' : 'triangle';
+    o.frequency.value = f;
+    const g = actx.createGain();
+    g.gain.value = 0.05 / (i + 1);
+    o.connect(g).connect(padGain);
+    o.start();
+  });
+}
+
+function pluck(freq, time, dur = 2.4, vol = 0.12) {
+  if (!actx) return;
+  const o = actx.createOscillator();
+  o.type = 'sine';
+  o.frequency.value = freq;
+  const g = actx.createGain();
+  g.gain.setValueAtTime(0, time);
+  g.gain.linearRampToValueAtTime(vol, time + 0.03);
+  g.gain.exponentialRampToValueAtTime(0.0008, time + dur);
+  const filt = actx.createBiquadFilter();
+  filt.type = 'lowpass';
+  filt.frequency.value = 2400;
+  o.connect(filt).connect(g).connect(actx.destination);
+  o.start(time);
+  o.stop(time + dur + 0.1);
+}
+
+function schedulePlucks() {
+  if (!playing) return;
+  const now = actx.currentTime;
+  const note = pentatonic[Math.floor(Math.random() * pentatonic.length)];
+  pluck(note, now + 0.05, 2.2 + Math.random() * 1.5, 0.08 + Math.random() * 0.05);
+  if (Math.random() < 0.35) {
+    pluck(note * 2, now + 0.4, 1.8, 0.035);
+  }
+  const nextIn = 900 + Math.random() * 1600;
+  scheduleId = setTimeout(schedulePlucks, nextIn);
+}
+
+const soundBtn = document.getElementById('soundToggle');
+const soundLabel = document.getElementById('soundLabel');
+
+soundBtn.addEventListener('click', () => {
+  ensureAudio();
+  if (actx.state === 'suspended') actx.resume();
+  playing = !playing;
+  soundBtn.classList.toggle('playing', playing);
+  if (playing) {
+    padGain.gain.cancelScheduledValues(actx.currentTime);
+    padGain.gain.linearRampToValueAtTime(1, actx.currentTime + 2.0);
+    soundLabel.textContent = 'playing';
+    schedulePlucks();
+    showToast('Ambient Qin Playing');
+  } else {
+    padGain.gain.cancelScheduledValues(actx.currentTime);
+    padGain.gain.linearRampToValueAtTime(0, actx.currentTime + 1.2);
+    soundLabel.textContent = 'paused';
+    clearTimeout(scheduleId);
+    showToast('Ambient Qin Paused');
+  }
+});
+</script>
+</body>
+</html>
+   
