@@ -2,7 +2,9 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
+<meta name="description" content="Yathin — 常世, a wandering ledger. Student, Re:Zero loyalist, and archivist of anime, manga, donghua, film and novels.">
+<meta name="theme-color" content="#0a0908">
 <title>YATHIN 燿 — 常世 the wandering ledger</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -43,6 +45,8 @@
   --body: "Cormorant Garamond", serif;
   --mono: "IBM Plex Mono", monospace;
   --ease: cubic-bezier(.22,.68,0,1);
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
 }
 
 *, *::before, *::after {
@@ -53,11 +57,18 @@ html {
   scroll-behavior: smooth;
   background-color: var(--ink);
   -webkit-text-size-adjust: 100%;
+  scroll-padding-top: env(safe-area-inset-top, 0px);
 }
 
 ::selection {
   background: var(--gold-dim);
   color: var(--ink);
+}
+
+:focus-visible {
+  outline: 2px solid var(--gold-bright);
+  outline-offset: 3px;
+  border-radius: 4px;
 }
 
 body {
@@ -233,13 +244,13 @@ body::after {
 /* Move to top-right on mobile so it never collides with bottom buttons */
 @media (max-width: 768px) {
   #soundToggle {
-    left: auto; right: 18px; top: 18px; bottom: auto;
+    left: auto; right: 18px; top: calc(18px + env(safe-area-inset-top, 0px)); bottom: auto;
     width: 44px; height: 44px;
     background: rgba(18, 14, 12, 0.85);
   }
   #soundToggle svg { width: 18px; height: 18px; }
   #soundLabel {
-    left: auto; right: 70px; top: 30px; bottom: auto;
+    left: auto; right: 70px; top: calc(30px + env(safe-area-inset-top, 0px)); bottom: auto;
     font-size: 0.55rem;
   }
 }
@@ -526,6 +537,7 @@ section {
 .stat-note {
   font-size: 0.92rem; color: var(--parchment-dim); margin-top: 8px;
   line-height: 1.55; font-style: italic;
+  transition: opacity .25s var(--ease);
 }
 
 .traits-col h4 {
@@ -610,8 +622,6 @@ section {
 
 /* ------------------------------------------------------------
    THE SACRED QR TALISMAN (SEAMLESSLY WOVEN INTO WEBSITE STYLE)
-   - Ornate Japanese Gold Border with corner brackets
-   - Deep obsidian glass & celestial blue-violet harmony
 ------------------------------------------------------------ */
 .talisman-wrap {
   margin: 6px auto 22px auto;
@@ -638,7 +648,6 @@ section {
   -webkit-backdrop-filter: blur(24px);
 }
 
-/* Authentic Japanese corner brackets on the Talisman frame */
 .talisman-frame::before, .talisman-frame::after,
 .talisman-corners::before, .talisman-corners::after {
   content: ""; position: absolute; width: 14px; height: 14px;
@@ -649,7 +658,6 @@ section {
 .talisman-corners::before { bottom: 6px; left: 6px; border-right: none; border-top: none; }
 .talisman-corners::after  { bottom: 6px; right: 6px; border-left: none; border-top: none; }
 
-/* Canvas mount tile */
 .talisman-canvas-tile {
   width: 100%; max-width: 216px;
   aspect-ratio: 1/1;
@@ -667,7 +675,6 @@ section {
   display: block; border-radius: 8px;
 }
 
-/* Talisman handle & seal typography */
 .talisman-handle {
   margin-top: 14px;
   display: flex; align-items: center; gap: 8px;
@@ -817,7 +824,7 @@ section {
    TOAST NOTIFICATION
 ============================================================ */
 #toastBox {
-  position: fixed; bottom: 24px; right: 24px; z-index: 9999;
+  position: fixed; bottom: calc(24px + env(safe-area-inset-bottom, 0px)); right: 24px; z-index: 9999;
   display: flex; flex-direction: column; gap: 8px;
   pointer-events: none; max-width: calc(100vw - 48px);
 }
@@ -870,7 +877,7 @@ footer p.small { margin-top: 8px; opacity: 0.6; font-size: 0.6rem; }
 </div>
 
 <!-- Navigation Rail -->
-<nav class="railnav">
+<nav class="railnav" aria-label="Section navigation">
   <a href="#hero" class="active"><span class="rlabel">gate</span><span class="dot"></span></a>
   <a href="#identity"><span class="rlabel">seal</span><span class="dot"></span></a>
   <a href="#worlds"><span class="rlabel">worlds</span><span class="dot"></span></a>
@@ -879,10 +886,10 @@ footer p.small { margin-top: 8px; opacity: 0.6; font-size: 0.6rem; }
 </nav>
 
 <!-- Audio Controller (Generative Qin Music) -->
-<button id="soundToggle" aria-label="toggle ambient music">
+<button id="soundToggle" aria-label="Toggle ambient music" aria-pressed="false">
   <span class="ring"></span>
   <span class="ring2"></span>
-  <svg id="iconSound" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+  <svg id="iconSound" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
     <path d="M4 9v6h4l5 5V4L8 9H4z" fill="currentColor" stroke="none"/>
     <path id="wavePath" d="M16 8a5 5 0 0 1 0 8" stroke-linecap="round"/>
   </svg>
@@ -890,11 +897,11 @@ footer p.small { margin-top: 8px; opacity: 0.6; font-size: 0.6rem; }
 <span id="soundLabel">ambient qin</span>
 
 <!-- Toast Container -->
-<div id="toastBox"></div>
+<div id="toastBox" role="status" aria-live="polite"></div>
 
 <!-- ======================= HERO ======================= -->
 <section id="hero">
-  <canvas id="dragonCanvas"></canvas>
+  <canvas id="dragonCanvas" aria-hidden="true"></canvas>
   <div class="hero-frame"><i></i></div>
   <div class="hero-inner">
     <div class="hero-kicker">常世 · a wandering ledger</div>
@@ -1032,7 +1039,7 @@ footer p.small { margin-top: 8px; opacity: 0.6; font-size: 0.6rem; }
           <div class="stat-bar"><div class="stat-fill" id="personalityFill" data-target="70"></div></div>
           <div class="stat-note" id="personalityNote">No fixed build — mood, humor, and energy re-roll daily. Consistency was never the point.</div>
           <button class="reroll-btn" id="rerollPersonality">
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
               <path d="M21.5 2v6h-6M2.5 22v-6h6M2 11.5a10 10 0 0 1 18.8-4.3M22 12.5a10 10 0 0 1-18.8 4.2"/>
             </svg>
             Reroll Build
@@ -1088,12 +1095,11 @@ footer p.small { margin-top: 8px; opacity: 0.6; font-size: 0.6rem; }
     <p>In sleep mode more often than not, but the QR still opens the door. Currently
       watching Re:Zero — obviously.</p>
 
-    <!-- Handcrafted Talisman QR Shrine (Woven into Site Theme + Blue Dots) -->
     <div class="talisman-wrap">
       <div class="talisman-frame" id="talismanFrame">
         <div class="talisman-corners"></div>
         <div class="talisman-canvas-tile">
-          <canvas id="instaQrCanvas" width="420" height="420"></canvas>
+          <canvas id="instaQrCanvas" width="420" height="420" role="img" aria-label="QR code linking to Instagram profile ya._.thin"></canvas>
         </div>
         <div class="talisman-handle">
           <span class="dot-mark"></span>
@@ -1104,16 +1110,15 @@ footer p.small { margin-top: 8px; opacity: 0.6; font-size: 0.6rem; }
       </div>
     </div>
 
-    <!-- Perfectly synchronized action buttons -->
     <div class="btn-group-sync">
       <a href="https://www.instagram.com/ya._.thin/" target="_blank" rel="noopener noreferrer" class="btn-primary-sync btn-insta" id="btnInstaLink">
-        <svg viewBox="0 0 24 24">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
           <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
         </svg>
         <span>Open Instagram Profile</span>
       </a>
       <button class="btn-copy-chip" id="copyInstaBtn" title="Copy Instagram username">
-        <svg viewBox="0 0 24 24" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+        <svg viewBox="0 0 24 24" stroke-width="2" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
         <span>Copy Handle</span>
       </button>
     </div>
@@ -1141,22 +1146,20 @@ footer p.small { margin-top: 8px; opacity: 0.6; font-size: 0.6rem; }
     <p>Low social battery in voice chat, unlimited in text — find me lurking in whatever
       server has the best fan theories, coding bots, or cultivation debates.</p>
 
-    <!-- Discord Account ID box -->
     <div class="discord-id-box">
       <span class="id-label">Discord User ID</span>
       <span class="id-num">1285791141266063475</span>
     </div>
 
-    <!-- Synchronized Discord action buttons -->
     <div class="btn-group-sync">
       <a href="https://discord.com/users/1285791141266063475" target="_blank" rel="noopener noreferrer" class="btn-primary-sync btn-discord" id="btnDiscordLink">
-        <svg viewBox="0 0 24 24">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
           <path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.929 1.793 8.18 1.793 12.061 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.893.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.028zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/>
         </svg>
         <span>Open Discord Profile</span>
       </a>
       <button class="btn-copy-chip" id="copyDiscordBtn" title="Copy Discord User ID">
-        <svg viewBox="0 0 24 24" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+        <svg viewBox="0 0 24 24" stroke-width="2" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
         <span>Copy ID</span>
       </button>
     </div>
@@ -1172,7 +1175,7 @@ footer p.small { margin-top: 8px; opacity: 0.6; font-size: 0.6rem; }
 
 <!-- ============================================================
      SCRIPTS & INTERACTIONS
-============================================================ */
+============================================================ -->
 <script>
 /* ------------------------------------------------------------
    1. TOAST NOTIFICATION UTILITY
@@ -1396,9 +1399,6 @@ document.getElementById('rerollPersonality').addEventListener('click', () => {
 
 /* ------------------------------------------------------------
    8. CODE-FORMAT INSTAGRAM QR CODE RENDERER
-   - Renders the authentic QR code for https://www.instagram.com/ya._.thin
-   - High-contrast, scannable blue-to-indigo dots
-   - Harmonized with the site's dark glass and gold aesthetics
 ------------------------------------------------------------ */
 const qrMatrixData = [
   "11111110000000011011101111111",
@@ -1604,6 +1604,8 @@ function dragonPath(time) {
   return pts;
 }
 
+const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
 function drawDragon(now) {
   const time = now - t0;
   dctx.clearRect(0, 0, dW, dH);
@@ -1672,7 +1674,7 @@ function drawDragon(now) {
     dctx.restore();
   }
 
-  requestAnimationFrame(drawDragon);
+  if (!reducedMotion) requestAnimationFrame(drawDragon);
 }
 requestAnimationFrame(drawDragon);
 
@@ -1725,7 +1727,7 @@ function drawParticles() {
     pctx.fill();
     pctx.restore();
   });
-  requestAnimationFrame(drawParticles);
+  if (!reducedMotion) requestAnimationFrame(drawParticles);
 }
 requestAnimationFrame(drawParticles);
 
@@ -1794,6 +1796,7 @@ soundBtn.addEventListener('click', () => {
   if (actx.state === 'suspended') actx.resume();
   playing = !playing;
   soundBtn.classList.toggle('playing', playing);
+  soundBtn.setAttribute('aria-pressed', String(playing));
   if (playing) {
     padGain.gain.cancelScheduledValues(actx.currentTime);
     padGain.gain.linearRampToValueAtTime(1, actx.currentTime + 2.0);
@@ -1811,4 +1814,3 @@ soundBtn.addEventListener('click', () => {
 </script>
 </body>
 </html>
-   
